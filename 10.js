@@ -127,7 +127,7 @@ function ArrayList () {
   }
 
   this.quickSort2 = function () {
-    var quick = function (array, left, right) {
+    function quick (array, left, right) {
       let index
       if (array.length > 1) {
         index = partition(array, left, right)
@@ -179,18 +179,19 @@ function createNonSortedArray (size) {
   //   array.insert(i)
   // }
 
-  array.insert(3)
-  array.insert(5)
-  array.insert(1)
-  array.insert(6)
-  array.insert(4)
-  array.insert(7)
-  array.insert(2)
+  array.insert(85)
+  array.insert(24)
+  array.insert(63)
+  array.insert(45)
+  array.insert(17)
+  array.insert(31)
+  array.insert(96)
+  array.insert(50)
 
   return array
 }
 
-var array = createNonSortedArray(5)
+var array = createNonSortedArray()
 console.log(array.toString())
 array.quickSort2()
 console.log(array.toString())
