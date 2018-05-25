@@ -107,26 +107,26 @@ function ArrayList () {
   }
 
   // 快速排序
-  // this.quickSort = function () {
-  //   var doSort = function (arr) {
-  //     if (arr.length <= 1) { return arr }
-  //     var pivotIndex = Math.floor(arr.length / 2)
-  //     var pivot = arr.splice(pivotIndex, 1)[0]
-  //     var left = []
-  //     var right = []
-  //     for (var i = 0; i < arr.length; i++) {
-  //       if (arr[i] < pivot) {
-  //         left.push(arr[i])
-  //       } else {
-  //         right.push(arr[i])
-  //       }
-  //     }
-  //     return doSort(left).concat([pivot], doSort(right))
-  //   }
-  //   array = doSort(array)
-  // }
-
   this.quickSort = function () {
+    var doSort = function (arr) {
+      if (arr.length <= 1) { return arr }
+      var pivotIndex = Math.floor(arr.length / 2)
+      var pivot = arr.splice(pivotIndex, 1)[0]
+      var left = []
+      var right = []
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+          left.push(arr[i])
+        } else {
+          right.push(arr[i])
+        }
+      }
+      return doSort(left).concat([pivot], doSort(right))
+    }
+    array = doSort(array)
+  }
+
+  this.quickSort2 = function () {
     var quick = function (array, left, right) {
       let index
       if (array.length > 1) {
@@ -168,9 +168,6 @@ function ArrayList () {
   }
 
   var swap = function (array, index1, index2) {
-    /*   var aux = array[index1]
-    array[index1] = array[index2]
-    array[index2] = aux */
     [array[index1], array[index2]] = [array[index2], array[index1]]
   }
 }
@@ -195,5 +192,5 @@ function createNonSortedArray (size) {
 
 var array = createNonSortedArray(5)
 console.log(array.toString())
-array.quickSort()
+array.quickSort2()
 console.log(array.toString())
