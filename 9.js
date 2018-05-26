@@ -42,8 +42,8 @@ function printNode (value) {
 }
 
 function Graph () {
-  var vertices = []  //顶点
-  var adjList = new Dictionary()  //边
+  var vertices = []  // 顶点
+  var adjList = new Dictionary()  // 边
 
   // 添加顶点
   this.addVertex = function (v) {
@@ -108,16 +108,16 @@ function Graph () {
     var pred = []
     queue.enqueue(v)
 
-    for (var i = 0; i < vertices.length; i++){
+    for (var i = 0; i < vertices.length; i++) {
       d[vertices[i]] = 0
-      pred[vertices[i]] = null      
+      pred[vertices[i]] = null
     }
 
     while (!queue.isEmpty()) {
       var u = queue.dequeue()
       var neighbors = adjList.get(u)
       color[u] = 'grey'
-      for (var i = 0; i < neighbors.length; i++) {
+      for (i = 0; i < neighbors.length; i++) {
         var w = neighbors[i]
         if (color[w] === 'white') {
           color[w] = 'grey'
@@ -136,7 +136,7 @@ function Graph () {
 }
 
 // 实例化一个graph
-function generateGraph(vertices) {
+function generateGraph (vertices) {
   var graph = new Graph()
   for (var i = 0; i < vertices.length; i++) {
     graph.addVertex(vertices[i])
@@ -164,12 +164,12 @@ console.log(graph.toString())
 function findShortestPath (graph, vertices, target) {
   var shortestPathA = graph.BFS(target)
   console.log(shortestPathA)
-  
+
   var fromVertex = target
   for (var i = 1; i < vertices.length; i++) {
     var toVertex = vertices[i]
     var path = []
-    for (var v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v]){
+    for (var v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v]) {
       path.push(v)
     }
     path.push(fromVertex)
@@ -181,7 +181,4 @@ function findShortestPath (graph, vertices, target) {
   }
 }
 
-findShortestPath(graph, myVertices, 'A')
-
-
-
+findShortestPath(graph, myVertices, 'B')
