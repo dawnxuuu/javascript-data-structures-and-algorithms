@@ -1,8 +1,10 @@
 function BinarySearchTree () {
-  var Node = function (key) {
-    this.key = key
-    this.left = null
-    this.right = null
+  function Node (key) {
+    return {
+      key,
+      left: null,
+      right: null
+    }
   }
 
   var root = null
@@ -37,7 +39,7 @@ function BinarySearchTree () {
     var inOrderTraverseNode = function (node, callback) {
       if (node !== null) {
         inOrderTraverseNode(node.left, callback)
-        callback(node.key)
+        // callback(node.key)
         inOrderTraverseNode(node.right, callback)
       }
     }
@@ -47,7 +49,7 @@ function BinarySearchTree () {
   this.preOrderTraverse = function (callback) {
     var preOrderTraverseNode = function (node, callback) {
       if (node !== null) {
-        callback(node.key)
+        // callback(node.key)
         preOrderTraverseNode(node.left, callback)
         preOrderTraverseNode(node.right, callback)
       }
@@ -60,7 +62,7 @@ function BinarySearchTree () {
       if (node !== null) {
         postOrderTraverseNode(node.left, callback)
         postOrderTraverseNode(node.right, callback)
-        callback(node.key)
+        // callback(node.key)
       }
     }
     postOrderTraverseNode(root, callback)
@@ -83,7 +85,7 @@ function BinarySearchTree () {
     var maxNode = function (node) {
       if (node) {
         while (node && node.right !== null) {
-          node = node.left
+          node = node.right
         }
         return node.key
       }
@@ -174,6 +176,9 @@ tree.preOrderTraverse(printNode)
 console.log(tree.search(1) ? '1 found' : '1 not found')
 console.log(tree.search(8) ? '8 found' : '8 not found')
 
-tree.remove(6)
-tree.remove(5)
-tree.remove(15)
+console.log(tree.max())
+
+
+// tree.remove(6)
+// tree.remove(5)
+// tree.remove(15)
