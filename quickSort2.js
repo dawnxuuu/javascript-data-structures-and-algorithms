@@ -1,5 +1,3 @@
-let arraySample = [85,24,63,45,17,31,96,50]
-
 function quickSort2(array) {
   function quick (array, left, right) {
     let index
@@ -38,15 +36,13 @@ function quickSort2(array) {
     return i
   }
 
-  function swap (array, index1, index2) {
+  // 交换
+  function swap (array, index1, index2) {    
     [array[index1], array[index2]] = [array[index2], array[index1]]
+    // console.log(`交换 ${array[index1]} 和 ${array[index2]} ==> ${array}`)
   }
 
-  const result = quick(array, 0, array.length - 1)
-
-  return result
+  return quick(array, 0, array.length - 1) 
 }
 
-arraySample = quickSort2(arraySample)
-
-console.log(arraySample)
+module.exports = quickSort2
