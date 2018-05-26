@@ -100,26 +100,88 @@ function Graph () {
       }
     }
   }
+
+  this.BFS = function (v) {
+    var color = initializeColor()
+    var queue = new Queue()
+    var d = []
+    var pred = []
+    queue.enqueue(v)
+
+    for (var i = 0; i < vertices.length; i++){
+      d[vertices[i]] = 0
+      pred[vertices[i]] = null      
+    }
+
+    while (!queue.isEmpty()) {
+      var u = queue.dequeue()
+      var neighbors = adjList.get(u)
+      color[u] = 'grey'
+      for (var i = 0; i < neighbors.length; i++) {
+        var w = neighbors[i]
+        if (color[w] === 'white') {
+          color[w] = 'grey'
+          d[w] = d[u] + 1
+          pred[w] = u
+          queue.enqueue(w)
+        }
+      }
+      color[u] = 'black'
+    }
+    return {
+      distances: d,
+      predecessors: pred
+    }
+  }
 }
 
-var graph = new Graph()
+// 实例化一个graph
+function generateGraph(vertices) {
+  var graph = new Graph()
+  for (var i = 0; i < vertices.length; i++) {
+    graph.addVertex(vertices[i])
+  }
+  graph.addEdge('A', 'B')
+  graph.addEdge('A', 'C')
+  graph.addEdge('A', 'D')
+  graph.addEdge('C', 'D')
+  graph.addEdge('C', 'G')
+  graph.addEdge('D', 'G')
+  graph.addEdge('D', 'H')
+  graph.addEdge('B', 'E')
+  graph.addEdge('B', 'F')
+  graph.addEdge('E', 'I')
+
+  return graph
+}
+
 var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-for (var i = 0; i < myVertices.length; i++) {
-  graph.addVertex(myVertices[i])
-}
-
-graph.addEdge('A', 'B')
-graph.addEdge('A', 'C')
-graph.addEdge('A', 'D')
-graph.addEdge('C', 'D')
-graph.addEdge('C', 'G')
-graph.addEdge('D', 'G')
-graph.addEdge('D', 'H')
-graph.addEdge('B', 'E')
-graph.addEdge('B', 'F')
-graph.addEdge('E', 'I')
-
+const graph = generateGraph(myVertices)
 console.log(graph.toString())
 
-graph.bfs(myVertices[0], printNode)
+// graph.bfs('A', printNode)
+
+function findShortestPath (graph, vertices, target) {
+  var shortestPathA = graph.BFS(target)
+  console.log(shortestPathA)
+  
+  var fromVertex = target
+  for (var i = 1; i < vertices.length; i++) {
+    var toVertex = vertices[i]
+    var path = []
+    for (var v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v]){
+      path.push(v)
+    }
+    path.push(fromVertex)
+    var s = path.pop()
+    while (path.length !== 0) {
+      s += ' - ' + path.pop()
+    }
+    console.log(s)
+  }
+}
+
+findShortestPath(graph, myVertices, 'A')
+
+
 
