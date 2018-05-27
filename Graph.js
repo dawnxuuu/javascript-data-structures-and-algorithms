@@ -203,19 +203,10 @@ function Graph () {
 // 实例化一个graph
 function generateGraph (vertices, edges) {
   var graph = new Graph()
-  for (var i = 0; i < vertices.length; i++) {
-    graph.addVertex(vertices[i])
-  }
-  // graph.addEdge('A', 'B')
-  // graph.addEdge('A', 'C')
-  // graph.addEdge('A', 'D')
-  // graph.addEdge('C', 'D')
-  // graph.addEdge('C', 'G')
-  // graph.addEdge('D', 'G')
-  // graph.addEdge('D', 'H')
-  // graph.addEdge('B', 'E')
-  // graph.addEdge('B', 'F')
-  // graph.addEdge('E', 'I')
+
+  vertices.forEach(element => {
+    graph.addVertex(element)
+  })
 
   edges.forEach(element => {
     graph.addEdge(element[0], element[1])
