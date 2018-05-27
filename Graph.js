@@ -83,6 +83,7 @@ function Graph () {
     var queue = new Queue()
     queue.enqueue(v)
 
+    console.log('bfs广度优先搜索：')
     while (!queue.isEmpty()) {
       var u = queue.dequeue()
       var neighbors = adjList.get(u)
@@ -136,6 +137,7 @@ function Graph () {
 
   this.dfs = function (callback) {
     var color = initializeColor()
+    console.log('dfs深度优先搜索：')
     for (var i = 0; i < vertices.length; i++) {
       if (color[vertices[i]] === 'white') {
         dfsVisit(vertices[i], color, callback)
@@ -219,15 +221,21 @@ function generateGraph (vertices, edges) {
 var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 var edges = [['A', 'B'], ['A', 'C'], ['A', 'D'], ['C', 'D'], ['C', 'G'], ['D', 'G'], ['D', 'H'], ['B', 'E'], ['B', 'F'], ['E', 'I']]
 const graph = generateGraph(myVertices, edges)
+console.log('图的结构：')
 console.log(graph.toString())
 
+// 广度
 graph.bfs('A', printNode)
+// 深度
+// graph.dfs(printNode)
 
 function findShortestPath (graph, vertices, target) {
   var shortestPathA = graph.BFS(target)
+  console.log('\n最短路径：')
   console.log(shortestPathA)
 
   var fromVertex = target
+  console.log('\n直观表示最短路径')
   for (var i = 1; i < vertices.length; i++) {
     var toVertex = vertices[i]
     var path = []
