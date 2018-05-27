@@ -158,7 +158,6 @@ function Graph () {
     }
   }
 
-  // var time = 0
   this.DFS = function () {
     var color = initializeColor()
     var d = []
@@ -225,7 +224,6 @@ function generateGraph (vertices, edges) {
   return graph
 }
 
-/*
 // 广度优先搜索
 var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 var edges = [['A', 'B'], ['A', 'C'], ['A', 'D'], ['C', 'D'], ['C', 'G'], ['D', 'G'], ['D', 'H'], ['B', 'E'], ['B', 'F'], ['E', 'I']]
@@ -255,9 +253,9 @@ function findShortestPath (graph, vertices, target) {
 }
 
 findShortestPath(graph, myVertices, 'A')
-*/
 
 // 深度优先搜索
+/*
 var myVertices2 = ['A', 'B', 'C', 'D', 'E', 'F']
 var edges2 = [['A', 'C'], ['A', 'D'], ['B', 'D'], ['B', 'E'], ['C', 'F'], ['F', 'E']]
 const graph2 = generateGraph(myVertices2, edges2)
@@ -266,3 +264,4 @@ console.log(graph2.toString())
 graph2.dfs(printNode)
 
 graph2.DFS()
+*/
