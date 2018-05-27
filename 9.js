@@ -133,33 +133,106 @@ function Graph () {
       predecessors: pred
     }
   }
+
+  this.dfs = function (callback) {
+    var color = initializeColor()
+    for (var i = 0; i < vertices.length; i++) {
+      if (color[vertices[i]] === 'white') {
+        dfsVisit(vertices[i], color, callback)
+      }
+    }
+
+    function dfsVisit (u, color, callback) {
+      color[u] = 'grey'
+      if (callback) {
+        callback(u)
+      }
+      var neighbors = adjList.get(u)
+      for (var i = 0; i < neighbors.length; i++) {
+        var w = neighbors[i]
+        if (color[w] === 'white') {
+          dfsVisit(w, color, callback)
+        }
+      }
+      color[u] = 'black'
+    }
+  }
+
+  // var time = 0
+  this.DFS = function () {
+    var color = initializeColor()
+    var d = []
+    var f = []
+    var p = []
+    var time = 0
+
+    for (let i = 0; i < vertices.length; i++) {
+      f[vertices[i]] = 0
+      d[vertices[i]] = 0
+      p[vertices[i]] = null
+    }
+    for (let i = 0; i < vertices.length; i++) {
+      if (color[vertices[i]] === 'white') {
+        DFSVisit(vertices[i], color, d, f, p)
+      }
+    }
+    return {
+      discovery: d,
+      finished: f,
+      predecessors: p
+    }
+
+    function DFSVisit (u, color, d, f, p) {
+      console.log('discovered ' + u)
+      color[u] = 'grey'
+      d[u] = ++time
+      var neighbors = adjList.get(u)
+      for (let i = 0; i < neighbors.length; i++) {
+        var w = neighbors[i]
+        if (color[w] === 'white') {
+          p[w] = u
+          DFSVisit(w, color, d, f, p)
+        }
+      }
+      color[u] = 'black'
+      f[u] = ++time
+      console.log('explored ' + u)
+    }
+  }
 }
 
 // 实例化一个graph
-function generateGraph (vertices) {
+function generateGraph (vertices, edges) {
   var graph = new Graph()
   for (var i = 0; i < vertices.length; i++) {
     graph.addVertex(vertices[i])
   }
-  graph.addEdge('A', 'B')
-  graph.addEdge('A', 'C')
-  graph.addEdge('A', 'D')
-  graph.addEdge('C', 'D')
-  graph.addEdge('C', 'G')
-  graph.addEdge('D', 'G')
-  graph.addEdge('D', 'H')
-  graph.addEdge('B', 'E')
-  graph.addEdge('B', 'F')
-  graph.addEdge('E', 'I')
+  // graph.addEdge('A', 'B')
+  // graph.addEdge('A', 'C')
+  // graph.addEdge('A', 'D')
+  // graph.addEdge('C', 'D')
+  // graph.addEdge('C', 'G')
+  // graph.addEdge('D', 'G')
+  // graph.addEdge('D', 'H')
+  // graph.addEdge('B', 'E')
+  // graph.addEdge('B', 'F')
+  // graph.addEdge('E', 'I')
+
+  edges.forEach(element => {
+    graph.addEdge(element[0], element[1])
+  })
 
   return graph
 }
 
+/*
+// 广度优先搜索
 var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-const graph = generateGraph(myVertices)
+var edges = [['A', 'B'], ['A', 'C'], ['A', 'D'], ['C', 'D'], ['C', 'G'], ['D', 'G'], ['D', 'H'], ['B', 'E'], ['B', 'F'], ['E', 'I']]
+const graph = generateGraph(myVertices, edges)
 console.log(graph.toString())
 
-// graph.bfs('A', printNode)
+graph.bfs('A', printNode)
 
 function findShortestPath (graph, vertices, target) {
   var shortestPathA = graph.BFS(target)
@@ -181,4 +254,15 @@ function findShortestPath (graph, vertices, target) {
   }
 }
 
-findShortestPath(graph, myVertices, 'B')
+findShortestPath(graph, myVertices, 'A')
+*/
+
+// 深度优先搜索
+var myVertices2 = ['A', 'B', 'C', 'D', 'E', 'F']
+var edges2 = [['A', 'C'], ['A', 'D'], ['B', 'D'], ['B', 'E'], ['C', 'F'], ['F', 'E']]
+const graph2 = generateGraph(myVertices2, edges2)
+console.log(graph2.toString())
+
+graph2.dfs(printNode)
+
+graph2.DFS()
