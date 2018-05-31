@@ -253,8 +253,8 @@ function findShortestPath (graph, vertices, target) {
 
 findShortestPath(graph, myVertices, 'A')
 
-// 深度优先搜索
 /*
+// 深度优先搜索
 var myVertices2 = ['A', 'B', 'C', 'D', 'E', 'F']
 var edges2 = [['A', 'C'], ['A', 'D'], ['B', 'D'], ['B', 'E'], ['C', 'F'], ['F', 'E']]
 const graph2 = generateGraph(myVertices2, edges2)
