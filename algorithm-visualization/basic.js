@@ -155,7 +155,7 @@ function renderDiv (leftId, rightId, speed) {
   lastDiv.classList.add('on')
 
   if (parseInt(firstDiv.title) > parseInt(lastDiv.title)) {
-/*     var temp = firstDiv.style.height
+    /*   var temp = firstDiv.style.height
     firstDiv.style.height = lastDiv.style.height
     lastDiv.style.height = temp */
 
