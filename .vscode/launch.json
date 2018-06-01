@@ -7,8 +7,21 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "启动程序",
+      "name": "调试当前文件",
       "program": "${file}",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "调试sort/index",
+      "program": "${workspaceFolder}/sort/index.js",
+      "args": [
+        "0",
+        "q2"
+      ],
       "skipFiles": [
         "<node_internals>/**"
       ]

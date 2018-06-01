@@ -1,4 +1,4 @@
-function quickSort(array) {
+function quickSort1(array) {
     if (array.length <= 1) { return array }
     var pivotIndex = Math.floor(array.length / 2)
     var pivot = array.splice(pivotIndex, 1)[0]
@@ -11,7 +11,7 @@ function quickSort(array) {
         right.push(array[i])
       }
     }
-    return quickSort(left).concat([pivot], quickSort(right))
+    return quickSort1(left).concat([pivot], quickSort1(right))
 }
 
-module.exports = quickSort
+module.exports = quickSort1

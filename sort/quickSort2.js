@@ -39,7 +39,6 @@ function quickSort2(array) {
   // 交换
   function swap (array, index1, index2) {    
     [array[index1], array[index2]] = [array[index2], array[index1]]
-    // console.log(`交换 ${array[index1]} 和 ${array[index2]} ==> ${array}`)
   }
 
   return quick(array, 0, array.length - 1) 
