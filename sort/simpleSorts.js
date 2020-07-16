@@ -2,6 +2,7 @@ function swap (array, index1, index2) {
   [array[index1], array[index2]] = [array[index2], array[index1]]
 }
 
+// b-冒泡
 function bubbleSort (array) {
   var length = array.length
   for (var i = 0; i < length; i++) {
@@ -14,6 +15,7 @@ function bubbleSort (array) {
   return array
 }
 
+// mb-改良冒泡
 function modifiedBubbleSort (array) {
   var length = array.length
   for (var i = 0; i < length; i++) {
@@ -26,6 +28,7 @@ function modifiedBubbleSort (array) {
   return array
 }
 
+// s-选择
 function selectionSort (array) {
   var length = array.length
   var indexMin
@@ -43,6 +46,7 @@ function selectionSort (array) {
   return array
 }
 
+// i-插入
 function insertSort (array) {
   var length = array.length
   var j
