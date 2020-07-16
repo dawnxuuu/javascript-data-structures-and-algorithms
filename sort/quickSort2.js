@@ -1,3 +1,4 @@
+// q2-本书快排
 function quickSort2(array) {
   function quick (array, left, right) {
     let index
@@ -37,7 +38,7 @@ function quickSort2(array) {
   }
 
   // 交换
-  function swap (array, index1, index2) {    
+  function swap (array, index1, index2) {
     [array[index1], array[index2]] = [array[index2], array[index1]]
   }
 
