@@ -3,7 +3,6 @@
  * 
  */
 function LeastCoinsChange (coins) {
-  debugger
   var coins = coins
   var cache = {}
 
