@@ -1,3 +1,7 @@
+/**
+ * 搜索二叉树
+ *
+ */
 function BinarySearchTree () {
   function Node (key) {
     return {

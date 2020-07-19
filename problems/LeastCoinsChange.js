@@ -1,3 +1,7 @@
+/**
+ * 最少硬币找零
+ * 
+ */
 function LeastCoinsChange (coins) {
   var coins = coins
   var cache = {}
