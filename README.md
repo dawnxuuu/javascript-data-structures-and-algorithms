@@ -16,5 +16,7 @@ node sort/index.js 10000 q1
 
 ./data-structure 数据结构
 
-./sort   排序算法
+./problems 实践算法问题
+
+./sort 排序算法
 
