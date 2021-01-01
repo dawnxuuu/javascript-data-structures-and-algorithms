@@ -39,6 +39,7 @@ function BinarySearchTree () {
     }
   }
 
+  // 中序遍历
   this.inOrderTraverse = function (callback) {
     var inOrderTraverseNode = function (node, callback) {
       if (node !== null) {
@@ -50,6 +51,7 @@ function BinarySearchTree () {
     inOrderTraverseNode(root, callback)
   }
 
+  // 前序遍历
   this.preOrderTraverse = function (callback) {
     var preOrderTraverseNode = function (node, callback) {
       if (node !== null) {
@@ -61,6 +63,7 @@ function BinarySearchTree () {
     preOrderTraverseNode(root, callback)
   }
 
+  // 后序遍历
   this.postOrderTraverse = function (callback) {
     var postOrderTraverseNode = function (node, callback) {
       if (node !== null) {
@@ -155,27 +158,38 @@ function BinarySearchTree () {
 }
 
 var tree = new BinarySearchTree()
-tree.insert(11)
-tree.insert(7)
-tree.insert(15)
-tree.insert(5)
-tree.insert(3)
-tree.insert(9)
+// tree.insert(11)
+// tree.insert(7)
+// tree.insert(15)
+// tree.insert(5)
+// tree.insert(3)
+// tree.insert(9)
+// tree.insert(8)
+// tree.insert(10)
+// tree.insert(13)
+// tree.insert(12)
+// tree.insert(14)
+// tree.insert(20)
+// tree.insert(18)
+// tree.insert(25)
+// tree.insert(6)
+
 tree.insert(8)
+tree.insert(3)
 tree.insert(10)
-tree.insert(13)
-tree.insert(12)
-tree.insert(14)
-tree.insert(20)
-tree.insert(18)
-tree.insert(25)
+tree.insert(1)
 tree.insert(6)
+tree.insert(14)
+tree.insert(4)
+tree.insert(7)
+tree.insert(13)
+tree.insert(2)
 
 function printNode (value) {
   console.log(value)
 }
 
-tree.postOrderTraverse(printNode)
+tree.preOrderTraverse(printNode)
 
 // console.log(tree.search(1) ? '1 found' : '1 not found')
 // console.log(tree.search(8) ? '8 found' : '8 not found')
