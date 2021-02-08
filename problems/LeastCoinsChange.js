@@ -1,3 +1,5 @@
+const print = require('../utils/print')
+
 /**
  * 最少硬币找零
  * 
@@ -31,5 +33,52 @@ function LeastCoinsChange (coins) {
   }
 }
 
-var leastCoinsChange = new LeastCoinsChange([1,5,10,25])
-console.log(leastCoinsChange.makeChange(35))
+// var leastCoinsChange = new LeastCoinsChange([1,5,11])
+// console.log(leastCoinsChange.makeChange(15))
+
+/**
+ * 最少硬币找零 解法2
+ * 
+ */
+function LeastCoinsChange2 (coins, totalMoney) {
+  let dp = new Array( totalMoney + 1 ).fill( Infinity );
+  dp[0] = 0;
+  
+  for (let m = 1; m <= totalMoney; m++) {
+    print(m, '小钱m:', m)
+    for (let coin of coins) {
+      print(m, 'coin:', coin, 'm-coin:', m - coin)
+      if (m - coin >= 0) {
+        print(m, `dp[${m}]:`, dp[m], `dp[${m} - ${coin}] + 1=`, dp[m - coin] + 1)
+        dp[m] = Math.min(dp[m], dp[m - coin] + 1);
+        print(m, `此轮dp[${m}]`, dp[m])
+      }
+    }
+
+    print(m, 'dp', dp)
+  }
+  
+  return dp[totalMoney] === Infinity ? -1 : dp[totalMoney];
+}
+
+// var res = LeastCoinsChange2([3,5,11], 15)
+
+function LeastCoinsChange3 (coins, totalMoney) {
+  const dps = new Array(totalMoney + 1).fill(Infinity)
+  dps[0] = 0
+
+  for (let coin of coins) {
+    print(coin, 'coin:', coin)
+    for (let m = coin; m <= totalMoney; m++) {
+      print(coin, 'm:', m, `dps[${m}]:`, dps[m], `dps[m-coin]+1:`, dps[m - coin] + 1)
+      dps[m] = Math.min(dps[m], dps[m - coin] + 1)
+    }
+
+    print(coin, 'dps', dps)
+  }
+
+  return dps[totalMoney] === Infinity ? '-1' : dps[totalMoney]
+}
+
+var res = LeastCoinsChange3([3,5,11], 15)
+console.log(res)
