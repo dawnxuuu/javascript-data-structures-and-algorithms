@@ -34,7 +34,8 @@ function LeastCoinsChange (coins) {
 }
 
 // var leastCoinsChange = new LeastCoinsChange([1,5,11])
-// console.log(leastCoinsChange.makeChange(15))
+// var res = leastCoinsChange.makeChange(15)
+// console.log(res)
 
 /**
  * 最少硬币找零 解法2
@@ -61,8 +62,12 @@ function LeastCoinsChange2 (coins, totalMoney) {
   return dp[totalMoney] === Infinity ? -1 : dp[totalMoney];
 }
 
-// var res = LeastCoinsChange2([3,5,11], 15)
+// var res = LeastCoinsChange2([1,5,11], 15)
 
+/**
+ * 最少硬币找零 解法3
+ * 
+ */
 function LeastCoinsChange3 (coins, totalMoney) {
   const dps = new Array(totalMoney + 1).fill(Infinity)
   dps[0] = 0
@@ -80,5 +85,4 @@ function LeastCoinsChange3 (coins, totalMoney) {
   return dps[totalMoney] === Infinity ? '-1' : dps[totalMoney]
 }
 
-var res = LeastCoinsChange3([3,5,11], 15)
-console.log(res)
+// var res = LeastCoinsChange3([1,5,11], 15)
