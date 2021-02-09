@@ -1,5 +1,7 @@
 const print = require('../utils/print')
 
+// 动态规划
+
 /**
  * 最少硬币找零
  * 
@@ -69,20 +71,27 @@ function LeastCoinsChange2 (coins, totalMoney) {
  * 
  */
 function LeastCoinsChange3 (coins, totalMoney) {
+  // 给每个面额留一个位置，用来记录该面额所需的最少硬币数
   const dps = new Array(totalMoney + 1).fill(Infinity)
+  // 面额0需硬币0
   dps[0] = 0
-  let moneyToCoinsCache = {}
 
+  // 遍历不同面额的硬币
   for (let coin of coins) {
     print(coin, '面额coin:', coin)
+    // 从面额数字开始一直到目标钱数，遍历每个钱数
     for (let m = coin; m <= totalMoney; m++) {
       print(coin, '金额m:', m, `dps[${m}]:`, dps[m], `dps[m-coin]+1:`, dps[m - coin] + 1)
+      // dps[m - coin] + 1解释为：金额减去当前面额得到的金额所需最少硬币数，再加一张当前面额，会有一个结果。
+      // dps[m]解释为：之前已经算出来的当前金额所需的最少硬币数
+      // 这两个取最小值，就是当前金额所需的最小硬币数
       dps[m] = Math.min(dps[m], dps[m - coin] + 1)
     }
 
     print(coin, 'dps', dps)
   }
 
+  // 最终看看目标金额所需最小硬币数是否已算过，若算过即是最终结果
   return dps[totalMoney] === Infinity ? '-1' : dps[totalMoney]
 }
 
