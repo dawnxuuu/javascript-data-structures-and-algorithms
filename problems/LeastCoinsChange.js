@@ -24,7 +24,7 @@ function LeastCoinsChange (coins) {
        (newLeast.length < leastCoins.length - 1 || !leastCoins.length) &&
        (newLeast.length || !newMoney)) {
         leastCoins = [coin].concat(newLeast)
-        console.log(`面额 ${money}  ===  新的最小硬币${leastCoins}`)
+        console.log(`面额 ${money}  ===  新的最少硬币${leastCoins}`)
       }
     }
 
@@ -71,11 +71,12 @@ function LeastCoinsChange2 (coins, totalMoney) {
 function LeastCoinsChange3 (coins, totalMoney) {
   const dps = new Array(totalMoney + 1).fill(Infinity)
   dps[0] = 0
+  let moneyToCoinsCache = {}
 
   for (let coin of coins) {
-    print(coin, 'coin:', coin)
+    print(coin, '面额coin:', coin)
     for (let m = coin; m <= totalMoney; m++) {
-      print(coin, 'm:', m, `dps[${m}]:`, dps[m], `dps[m-coin]+1:`, dps[m - coin] + 1)
+      print(coin, '金额m:', m, `dps[${m}]:`, dps[m], `dps[m-coin]+1:`, dps[m - coin] + 1)
       dps[m] = Math.min(dps[m], dps[m - coin] + 1)
     }
 
@@ -85,4 +86,4 @@ function LeastCoinsChange3 (coins, totalMoney) {
   return dps[totalMoney] === Infinity ? '-1' : dps[totalMoney]
 }
 
-// var res = LeastCoinsChange3([1,5,11], 15)
+var res = LeastCoinsChange3([1,5,11], 15)
