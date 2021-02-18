@@ -46,7 +46,7 @@ export default {
       codeName: 0,
       lastCodeName: 0,
       rate: 0,
-      arrayLen: 500,
+      arrayLen: 100,
       editorOption: {
         tabSize: 4,
         mode: 'text/javascript',
@@ -62,7 +62,7 @@ export default {
   computed: {
     code: function () {
       if (this.lastCodeName !== this.codeName) {
-        const lenDict = [500, 100, 500, 100, 200]
+        const lenDict = [100, 100, 100, 100, 100]
         this.arrayLen = lenDict[this.codeName]
         if (this.arrayCanvas) {
           this.array = getArray(this.arrayLen, this.onArrayChange)
