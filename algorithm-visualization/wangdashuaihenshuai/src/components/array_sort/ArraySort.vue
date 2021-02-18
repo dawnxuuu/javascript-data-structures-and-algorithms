@@ -2,7 +2,10 @@
   <div class="array-container">
     <div class="code container">
       <div class="controler">
-        <el-button :type="isRunning ? 'warning' : 'primary'" @click.native="runCode">{{isRunning ? '运行中' : '运行'}}</el-button>
+        <el-button :type="isRunning ? 'warning' : 'primary'"
+         @click.native="runCode">{{
+           isRunning ? '运行中' : '运行'
+         }}</el-button>
         <el-button @click.native="randomArray" type="primary">随机数组</el-button>
         <div class="block">
           <span class="demonstration">动画速度</span>
